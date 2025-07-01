@@ -57,16 +57,23 @@ public class GameFrame extends MyFrame {
 		while (i<GameWorld.playerBullets.size()){
 			PlayerBullet b=GameWorld.playerBullets.get(i);
 			int j=0;
+			int hits=0;
 			while(j<GameWorld.enemies.size()) {
 				Enemy e=GameWorld.enemies.get(j);
 				if(Math.abs(e.x-b.x)<=30&&Math.abs(e.y-b.y)<=30) {
 					System.out.println("あたり");
+					hits++;
 					GameWorld.enemies.remove(j);}else
 					{
 						j++;
 					}
 				}
-			i++;
+			if(hits>0) {
+				GameWorld.playerBullets.remove(i);
+			}else {
+				i++;
+			}
+		
 				
 			}
 		
